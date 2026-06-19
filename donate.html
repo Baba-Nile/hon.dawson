@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Support Hon. Dawson Mudenyo's campaign for Kwanza Constituency MP 2027." />
+  <title>Support the Campaign — Hon. Dawson Mudenyo | Kwanza Constituency 2027</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- Firebase: Live donation tracker.
+       Uses the SAME project config as firebase-admin.js — replace placeholder
+       values in firebase-admin.js and this will start working automatically.
+       Donations are read from the 'donations' collection: { amount, displayName, timestamp } -->
+  <script type="module">
+    import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, onSnapshot, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const GOAL = 2000000;
+
+    function fmt(n) { return 'KES ' + Number(n).toLocaleString('en-KE'); }
+
+    function timeAgo(date) {
+      const diff = Math.floor((Date.now() - date) / 1000);
+      if (diff < 60) return 'just now';
+      if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+      if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+      return Math.floor(diff / 86400) + 'd ago';
+    }
+
+    try {
+      const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      onSnapshot(collection(db, 'donations'), (snap) => {
+        let total = 0, count = 0;
+        snap.forEach(doc => { const d = doc.data(); total += Number(d.amount) || 0; count++; });
+        const pct = Math.min((total / GOAL) * 100, 100).toFixed(1);
+        const bar = document.getElementById('progress-bar');
+        if (bar) bar.style.width = pct + '%';
+        const ids = {
+          'stat-total': fmt(total),
+          'stat-count': count + (count === 1 ? ' donor' : ' donors'),
+          'stat-pct': pct + '% funded',
+          'stat-pct2': pct + '%',
+          'stat-remain': fmt(Math.max(GOAL - total, 0)),
+          'compact-total': fmt(total),
+          'compact-count': count + ' donors',
+          'compact-pct': pct + '%',
+          'mom-total': fmt(total),
+          'mom-count': count,
+        };
+        Object.entries(ids).forEach(([id, val]) => { const el = document.getElementById(id); if (el) el.textContent = val; });
+        const cBar = document.getElementById('compact-bar');
+        if (cBar) cBar.style.width = pct + '%';
+      }, (err) => { console.warn('[Donate] Firebase not yet configured — tracker will show zero state.', err); });
+
+      const recentQ = query(collection(db, 'donations'), orderBy('timestamp', 'desc'), limit(5));
+      onSnapshot(recentQ, (snap) => {
+        const feed = document.getElementById('recent-feed');
+        if (!feed) return;
+        if (snap.empty) { feed.innerHTML = '<p class="feed-empty">Be the first to support the campaign! 🎉</p>'; return; }
+        let html = '';
+        snap.forEach(doc => {
+          const d = doc.data();
+          const name = d.displayName || d.firstName || 'Supporter';
+          const amount = fmt(d.amount || 0);
+          const time = d.timestamp ? timeAgo(d.timestamp.toDate ? d.timestamp.toDate() : new Date(d.timestamp)) : 'recently';
+          html += `<div class="feed-item"><div class="feed-avatar">${name.charAt(0).toUpperCase()}</div><div class="feed-info"><span class="feed-name">${name}</span><span class="feed-time">${time}</span></div><span class="feed-amount">${amount}</span></div>`;
+        });
+        feed.innerHTML = html;
+      }, () => { });
+    } catch (err) {
+      console.warn('[Donate] Firebase init skipped — placeholder config still in place.', err);
+    }
+  </script>
+
+  <style>
+    #read-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      z-index: 10000;
+      transition: width .1s linear;
+      pointer-events: none;
+    }
+
+    .nav-logo-img {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+    }
+
+    .donate-section {
+      background: var(--charcoal);
+      padding: 80px 0 120px;
+      min-height: 70vh;
+    }
+
+    .donate-hero-bg {
+      background: url('https://images.unsplash.com/photo--5207764f72e7?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+    }
+
+    .tracker-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 15, 34, 0.97);
+      border-bottom: 1px solid rgba(212, 168, 47, 0.25);
+      padding: 10px 0;
+      backdrop-filter: blur(12px);
+      transform: translateY(-100%);
+      transition: transform .4s ease;
+    }
+
+    .tracker-sticky.visible {
+      transform: translateY(0);
+    }
+
+    .tracker-sticky-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tracker-label {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--gold);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .tracker-bar-wrap {
+      flex: 1;
+      min-width: 120px;
+      height: 6px;
+      background: rgba(255, 255, 255, .08);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .tracker-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 99px;
+      width: 0%;
+      transition: width 1s ease;
+    }
+
+    .tracker-stats {
+      display: flex;
+      gap: 16px;
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .65);
+      white-space: nowrap;
+    }
+
+    .tracker-stats strong {
+      color: var(--gold);
+    }
+
+    .tracker-donate-btn {
+      padding: 7px 18px;
+      background: var(--gold);
+      color: #0a1830;
+      border-radius: 8px;
+      font-size: .78rem;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity .2s;
+    }
+
+    .tracker-donate-btn:hover {
+      opacity: .85;
+    }
+
+    .tracker-card {
+      background: linear-gradient(135deg, rgba(10, 33, 72, 0.55), rgba(6, 15, 34, 0.7));
+      border: 1px solid rgba(212, 168, 47, .3);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tracker-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .tracker-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #2ecc71;
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(46, 204, 113, .5)
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(46, 204, 113, 0)
+      }
+    }
+
+    .tracker-card-title {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .tracker-card-title span {
+      color: var(--gold);
+      font-size: .75rem;
+      font-family: var(--font-body);
+    }
+
+    .tracker-big-total {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .tracker-goal-label {
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .35);
+      margin-bottom: 20px;
+    }
+
+    .prog-wrap {
+      height: 10px;
+      background: rgba(255, 255, 255, .07);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+      border-radius: 99px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(.25, 1, .5, 1);
+      position: relative;
+    }
+
+    .prog-fill::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(212, 168, 47, .8);
+    }
+
+    .prog-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: .68rem;
+      color: rgba(255, 255, 255, .28);
+      margin-bottom: 24px;
+    }
+
+    .tracker-mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .mini-stat {
+      background: rgba(0, 0, 0, .2);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .mini-stat-val {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 3px;
+    }
+
+    .mini-stat-lbl {
+      font-size: .62rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    .feed-title {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255, 255, 255, .3);
+      margin-bottom: 12px;
+    }
+
+    #recent-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .feed-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(0, 0, 0, .2);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .04);
+      animation: fadeSlide .4s ease;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateX(-8px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    .feed-avatar {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(212, 168, 47, .2), rgba(212, 168, 47, .1));
+      border: 1px solid rgba(212, 168, 47, .3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .feed-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .feed-name {
+      display: block;
+      font-size: .8rem;
+      color: var(--white);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .feed-time {
+      font-size: .65rem;
+      color: rgba(255, 255, 255, .3);
+    }
+
+    .feed-amount {
+      font-family: var(--font-heading);
+      font-size: .85rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .feed-empty {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .3);
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    .donate-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 48px;
+      align-items: start;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .donate-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 20px;
+      padding: 52px 48px;
+      position: relative;
+      text-align: center;
+    }
+
+    .donate-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 20px 20px 0 0;
+    }
+
+    .donate-card-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .donate-card-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .donate-card-title span {
+      color: var(--gold);
+    }
+
+    .donate-card-sub {
+      font-size: .95rem;
+      color: rgba(255, 255, 255, .5);
+      line-height: 1.75;
+      max-width: 380px;
+      margin: 0 auto 40px;
+    }
+
+    .amount-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .amount-btn {
+      padding: 14px 8px;
+      background: rgba(212, 168, 47, .07);
+      border: 1px solid rgba(212, 168, 47, .2);
+      border-radius: 10px;
+      color: rgba(255, 255, 255, .7);
+      font-family: var(--font-heading);
+      font-size: .95rem;
+      cursor: pointer;
+      transition: all .2s;
+      text-align: center;
+    }
+
+    .amount-btn:hover,
+    .amount-btn.active {
+      background: rgba(212, 168, 47, .18);
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .amount-btn small {
+      display: block;
+      font-size: .6rem;
+      color: rgba(255, 255, 255, .35);
+      font-family: var(--font-body);
+      margin-top: 3px;
+    }
+
+    .donate-cta-btn {
+      display: inline-block;
+      width: 100%;
+      padding: 22px 32px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark));
+      background-size: 200% auto;
+      border-radius: 14px;
+      color: #0a1830;
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(212, 168, 47, .35);
+      transition: background-position .4s ease, transform .2s, box-shadow .3s;
+      cursor: pointer;
+    }
+
+    .donate-cta-btn:hover {
+      background-position: right center;
+      transform: translateY(-3px);
+      box-shadow: 0 18px 50px rgba(212, 168, 47, .5);
+    }
+
+    .secure-note {
+      margin-top: 16px;
+      font-size: .75rem;
+      color: rgba(255, 255, 255, .25);
+    }
+
+    .impact-preview {
+      margin: 32px 0 0;
+      padding: 20px;
+      background: rgba(212, 168, 47, .05);
+      border: 1px solid rgba(212, 168, 47, .12);
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .impact-preview-title {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255, 255, 255, .3);
+      margin-bottom: 12px;
+    }
+
+    .impact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .55);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .impact-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 36px 0;
+      color: rgba(255, 255, 255, .2);
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .pm-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 8px;
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .mpesa-card {
+      background: linear-gradient(145deg, rgba(10, 33, 72, .6), rgba(6, 15, 34, .7));
+      border: 1px solid rgba(212, 168, 47, .22);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 20px;
+    }
+
+    .mpesa-heading {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .mpesa-sub {
+      font-size: .76rem;
+      color: rgba(255, 255, 255, .38);
+      margin-bottom: 18px;
+    }
+
+    .mpesa-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, .28);
+      border: 1px solid rgba(212, 168, 47, .18);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .mpesa-field-lbl {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255, 255, 255, .35);
+      margin-bottom: 3px;
+    }
+
+    .mpesa-field-val {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      color: var(--gold);
+      letter-spacing: .08em;
+    }
+
+    .copy-btn {
+      padding: 7px 14px;
+      background: rgba(212, 168, 47, .15);
+      border: 1px solid rgba(212, 168, 47, .3);
+      border-radius: 7px;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .copy-btn:hover {
+      background: rgba(212, 168, 47, .28);
+    }
+
+    .mpesa-steps {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .mpesa-steps-lbl {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: rgba(255, 255, 255, .28);
+      margin-bottom: 10px;
+    }
+
+    .mpesa-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .52);
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .step-num {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      background: rgba(212, 168, 47, .15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .65rem;
+      color: var(--gold);
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .quote-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .quote-card .quote-text {
+      font-size: .9rem;
+      font-style: italic;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .quote-card .quote-name {
+      font-size: .82rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .momentum-banner {
+      background: linear-gradient(135deg, var(--teal-primary), var(--olive-dark));
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    .momentum-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .mom-stat {
+      text-align: center;
+    }
+
+    .mom-stat-num {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .mom-stat-lbl {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .6);
+      margin-top: 4px;
+    }
+
+    .float-donate {
+      position: fixed;
+      bottom: 28px;
+      right: 96px;
+      z-index: 900;
+      opacity: 0;
+      pointer-events: none;
+      transition: all .3s ease;
+      transform: translateY(10px);
+    }
+
+    .float-donate.show {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .float-donate a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #0a1830;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: .85rem;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(212, 168, 47, .4);
+    }
+
+    @media (max-width:1024px) {
+      .donate-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .float-donate {
+        right: 24px;
+        bottom: 90px;
+      }
+    }
+
+    @media (max-width:640px) {
+      .amount-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .donate-card {
+        padding: 36px 24px;
+      }
+
+      .tracker-sticky-inner {
+        justify-content: center;
+      }
+
+      .tracker-stats {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="read-progress"></div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">DM</div>
+        <div class="nav-logo-text"><span class="nav-logo-name">Hon. Dawson Mudenyo</span><span class="nav-logo-sub">MP
+            Aspirant · Kwanza 2027</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="projects.html">Projects</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-outline btn-sm">Volunteer</a>
+        <a href="donate.html" class="btn btn-primary btn-sm">Support Campaign</a>
+      </div>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="projects.html">Projects</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-menu-cta">
+      <a href="contact.html" class="btn btn-outline">Volunteer</a>
+      <a href="donate.html" class="btn btn-primary">Support Campaign</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-bg donate-hero-bg" data-editable-img="donate-hero-bg"></div>
+    <div class="container page-hero-content">
+      <p class="page-hero-label">Support the Movement</p>
+      <h1 class="page-hero-title">Support the <span>Campaign</span></h1>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Donate</span></div>
+    </div>
+  </div>
+
+  <div class="tracker-sticky" id="trackerSticky">
+    <div class="tracker-sticky-inner">
+      <span class="tracker-label">🟢 Live</span>
+      <div class="tracker-bar-wrap">
+        <div class="tracker-bar-fill" id="compact-bar"></div>
+      </div>
+      <div class="tracker-stats">
+        <span><strong id="compact-total">KES 0</strong> raised</span>
+        <span><strong id="compact-count">0 donors</strong></span>
+        <span><strong id="compact-pct">0%</strong> of goal</span>
+      </div>
+      <a href="#donate-section" class="tracker-donate-btn">Donate Now</a>
+    </div>
+  </div>
+
+  <section class="donate-section" id="donate-section">
+    <div class="container">
+      <div class="donate-grid">
+
+        <div>
+          <div class="tracker-card" id="trackerCard">
+            <div class="tracker-card-header">
+              <div class="live-dot"></div>
+              <div class="tracker-card-title">Campaign Fundraising Tracker &nbsp;<span>— Updates live</span></div>
+            </div>
+            <div class="tracker-big-total" id="stat-total">KES 0</div>
+            <div class="tracker-goal-label">raised of KES 2,000,000 goal</div>
+            <div class="prog-wrap">
+              <div class="prog-fill" id="progress-bar"></div>
+            </div>
+            <div class="prog-labels"><span>KES 0</span><span id="stat-pct">0% funded</span><span>KES 2,000,000</span>
+            </div>
+            <div class="tracker-mini-stats">
+              <div class="mini-stat">
+                <div class="mini-stat-val" id="stat-count">0</div>
+                <div class="mini-stat-lbl">Donors</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat-val" id="stat-pct2">0%</div>
+                <div class="mini-stat-lbl">Funded</div>
+              </div>
+              <div class="mini-stat">
+                <div class="mini-stat-val" id="stat-remain">KES 2M</div>
+                <div class="mini-stat-lbl">Remaining</div>
+              </div>
+            </div>
+            <div class="feed-title">🕐 Recent Supporters</div>
+            <div id="recent-feed">
+              <p class="feed-empty">Be the first to support the campaign! 🎉</p>
+            </div>
+          </div>
+
+          <div class="donate-card">
+            <span class="donate-card-icon">💛</span>
+            <h2 class="donate-card-title">Power the <span>Mudenyo Campaign</span></h2>
+            <p class="donate-card-sub" data-editable="donate-sub">Every shilling you give goes directly toward reaching
+              Kwanza's residents, organising in every ward, and building a movement rooted in faith and accountable
+              leadership.</p>
+            <div class="amount-grid">
+              <div class="amount-btn" onclick="selectAmount(this,500)">KES 500<small>Supporter</small></div>
+              <div class="amount-btn" onclick="selectAmount(this,1000)">KES 1,000<small>Believer</small></div>
+              <div class="amount-btn" onclick="selectAmount(this,2500)">KES 2,500<small>Champion</small></div>
+              <div class="amount-btn" onclick="selectAmount(this,5000)">KES 5,000<small>Mobiliser</small></div>
+              <div class="amount-btn" onclick="selectAmount(this,10000)">KES 10,000<small>Patron</small></div>
+              <div class="amount-btn" onclick="selectAmount(this,0)">Custom<small>Any amount</small></div>
+            </div>
+            <a href="#mpesa-card" id="donateCta" class="donate-cta-btn">💛 Donate to the Campaign</a>
+            <p class="secure-note">🔒 Secure giving · M-Pesa · Bank Transfer · In-person</p>
+            <div class="or-divider">or pay directly via M-Pesa</div>
+            <div class="payment-methods">
+              <div class="pm-badge">📱 M-Pesa Paybill</div>
+              <div class="pm-badge">🏦 Bank Transfer</div>
+              <div class="pm-badge">🤝 In Person</div>
+            </div>
+            <div class="impact-preview">
+              <div class="impact-preview-title">Your donation powers</div>
+              <div class="impact-item"><span class="impact-icon">📢</span><span>Community outreach and voter education
+                  across Kwanza</span></div>
+              <div class="impact-item"><span class="impact-icon">🤝</span><span>Organising and mobilising grassroots
+                  teams in every ward</span></div>
+              <div class="impact-item"><span class="impact-icon">🏥</span><span>Advocacy for healthcare, clean water &
+                  security improvements</span></div>
+              <div class="impact-item"><span class="impact-icon">🎓</span><span>Transparent bursary access campaigns for
+                  Kwanza students</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mpesa-card" id="mpesa-card">
+            <div class="mpesa-heading">📱 Lipa na M-Pesa Directly</div>
+            <div class="mpesa-sub">Mudenyo 2027 Campaign Fund — placeholder details below</div>
+            <div class="mpesa-field">
+              <div>
+                <div class="mpesa-field-lbl">Paybill Number</div>
+                <div class="mpesa-field-val" id="paybill-num">000000</div>
+              </div>
+              <button class="copy-btn" onclick="copyText('000000',this)">Copy</button>
+            </div>
+            <div class="mpesa-field">
+              <div>
+                <div class="mpesa-field-lbl">Account Number</div>
+                <div class="mpesa-field-val" id="account-num">KWANZA2027</div>
+              </div>
+              <button class="copy-btn" onclick="copyText('KWANZA2027',this)">Copy</button>
+            </div>
+            <div class="mpesa-steps">
+              <div class="mpesa-steps-lbl">How to Pay</div>
+              <div class="mpesa-step">
+                <div class="step-num">1</div><span>M-Pesa → Lipa na M-Pesa → Pay Bill</span>
+              </div>
+              <div class="mpesa-step">
+                <div class="step-num">2</div><span>Business No: <strong style="color:var(--gold)">000000</strong></span>
+              </div>
+              <div class="mpesa-step">
+                <div class="step-num">3</div><span>Account No: <strong
+                    style="color:var(--gold)">KWANZA2027</strong></span>
+              </div>
+              <div class="mpesa-step">
+                <div class="step-num">4</div><span>Enter amount, M-Pesa PIN and confirm</span>
+              </div>
+            </div>
+          </div>
+          <div class="quote-card">
+            <p class="quote-text" data-editable="donate-quote">"You can support this vision for Kwanza through your
+              prayers, your voice, and your generosity. Every contribution moves us closer to the leadership our
+              constituency deserves."</p>
+            <p class="quote-name">— Hon. Dawson Mudenyo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="momentum-banner">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:8px;">The Momentum Is <span>Building</span></h2>
+      <p style="color:rgba(255,255,255,0.7); font-size:0.95rem;">Together, Kwanza is building something that lasts.</p>
+      <div class="momentum-stats">
+        <div class="mom-stat">
+          <div class="mom-stat-num" id="mom-total">KES 0</div>
+          <div class="mom-stat-lbl">Raised So Far</div>
+        </div>
+        <div class="mom-stat">
+          <div class="mom-stat-num" id="mom-count">0</div>
+          <div class="mom-stat-lbl">Supporters</div>
+        </div>
+        <div class="mom-stat">
+          <div class="mom-stat-num">4</div>
+          <div class="mom-stat-lbl">Wards Reached</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-darker">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title" style="max-width:600px;margin:0 auto 16px;">Can't Donate? <span>Volunteer Instead</span>
+      </h2>
+      <p class="section-subtitle" style="margin:0 auto 32px;">Time, voice, and presence matter just as much as money.
+        Join the movement as a volunteer in your ward.</p>
+      <a href="contact.html" class="btn btn-outline btn-lg">Become a Volunteer</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo" style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+              <div class="footer-logo-badge">DM</div>
+              <div class="nav-logo-text"><span class="nav-logo-name">Hon. Dawson Mudenyo</span><span
+                  class="nav-logo-sub">MP Aspirant · Kwanza 2027</span></div>
+            </div>
+            <p class="footer-desc">Faith-driven, experienced leadership for Kwanza Constituency.</p>
+            <div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a
+                href="#" class="social-icon">📸</a><a href="https://wa.me/254700000000" class="social-icon">💬</a></div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links"><a href="index.html">Home</a><a href="about.html">About Dawson</a><a
+                href="manifesto.html">Manifesto</a><a href="projects.html">Development Priorities</a><a
+                href="news.html">News</a></div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Get Involved</h4>
+            <div class="footer-links"><a href="contact.html">Volunteer</a><a href="donate.html">Donate</a><a
+                href="news.html">News & Updates</a><a href="contact.html">Contact Us</a></div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Contact</h4>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>Kwanza Constituency,
+                Trans-Nzoia County</span></div>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+254 700 000000</span>
+            </div>
+            <div class="footer-contact-item"><span
+                class="footer-contact-icon">✉️</span><span>info@dawsonmudenyo.org</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2027 Hon. Dawson Mudenyo Campaign. All rights reserved. | Kwanza Constituency,
+          Trans-Nzoia County</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="float-donate" id="floatDonate"><a href="#donate-section">💛 Donate Now</a></div>
+  <a href="https://wa.me/254700000000?text=Hello%2C%20I%20want%20to%20support%20Hon.%20Dawson%20Mudenyo%27s%20campaign!"
+    class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="firebase-admin.js"></script>
+
+  <script>
+    function copyText(txt, btn) {
+      navigator.clipboard.writeText(txt).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 1800);
+      });
+    }
+
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+      const bar = document.getElementById('read-progress');
+      if (bar) bar.style.width = pct + '%';
+    });
+
+    const trackerCard = document.getElementById('trackerCard');
+    const stickyBar = document.getElementById('trackerSticky');
+    if (trackerCard && stickyBar) {
+      new IntersectionObserver(([e]) => { stickyBar.classList.toggle('visible', !e.isIntersecting); }, { threshold: 0 }).observe(trackerCard);
+    }
+
+    const floatDonate = document.getElementById('floatDonate');
+    if (trackerCard && floatDonate) {
+      new IntersectionObserver(([e]) => { floatDonate.classList.toggle('show', !e.isIntersecting); }, { threshold: 0 }).observe(trackerCard);
+    }
+
+    function selectAmount(btn, amount) {
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cta = document.getElementById('donateCta');
+      cta.textContent = amount > 0 ? '💛 Donate KES ' + amount.toLocaleString('en-KE') + ' Now' : '💛 Donate Any Amount Now';
+    }
+  </script>
+</body>
+
+</html>

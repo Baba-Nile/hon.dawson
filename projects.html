@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Development Priorities — Hon. Dawson Mudenyo | Kwanza Constituency 2027</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <style>
+    .nav-logo-img {
+      height: 56px;
+      width: 56px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .footer-logo-img {
+      height: 72px;
+      width: 72px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .ticker-band {
+      background: var(--gold);
+      overflow: hidden;
+      padding: 14px 0;
+    }
+
+    .ticker-inner {
+      display: flex;
+      gap: 0;
+      animation: ticker 28s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 40px;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #052918;
+    }
+
+    .ticker-dot {
+      width: 6px;
+      height: 6px;
+      background: #052918;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .projects-hero-bg {
+      background: url('https://scontent-otp1-1.xx.fbcdn.net/v/t39.30808-6/608092808_122159853518694407_9193218138137506411_n.jpg?stp=c256.0.1536.1536a_dst-jpg_tt6&cstp=mx1536x1536&ctp=s552x414&_nc_cat=104&ccb=1-7&_nc_sid=714c7a&_nc_eui2=AeFKK1a4OjyPTOzOS2eIh4dqwB14Y_GKv7_AHXhj8Yq_vwGlcddENUkhEknKN3PMZHTBy9fHQM9iznyeJ_tZuyxa&_nc_ohc=NswDMUq8BGwQ7kNvwGHlwbw&_nc_oc=Adrkla8sUpt9uPMMoECSI9vf9IdJzQ3kNJ2jbInoE3lt-0d6I3iGA_INVDQk_hBcVCY&_nc_zt=23&_nc_ht=scontent-otp1-1.xx&_nc_gid=G16Ib0ArA1iJj1A-GlOaYg&_nc_ss=7b2a8&oh=00_Af8ZFFG9Km7tlHs1bxOsmCc-gY70DI7hFM6hWHYLMFHA0A&oe=6A3ABABF') center/cover;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 168, 47, 0.4);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .project-card-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .project-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .project-card:hover .project-card-img img {
+      transform: scale(1.08);
+    }
+
+    .project-status {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .status-priority {
+      background: rgba(212, 168, 47, 0.9);
+      color: #1a1a1a;
+    }
+
+    .status-urgent {
+      background: rgba(180, 40, 40, 0.9);
+      color: #fff;
+    }
+
+    .status-ongoing-need {
+      background: rgba(28, 79, 143, 0.9);
+      color: #fff;
+    }
+
+    .project-card-body {
+      padding: 24px;
+    }
+
+    .project-category {
+      font-family: var(--font-accent, var(--font-body));
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .project-card h3 {
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .project-card p {
+      font-size: 0.88rem;
+      margin-bottom: 20px;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .project-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .featured-project {
+      background: linear-gradient(135deg, rgba(10, 33, 72, 0.55), rgba(6, 15, 34, 0.75));
+      border: 1px solid rgba(212, 168, 47, 0.25);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 56px;
+    }
+
+    .featured-project-img {
+      height: 420px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .featured-badge {
+      background: rgba(212, 168, 47, 0.9);
+      color: #1a1a1a;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .featured-project-content {
+      padding: 48px;
+    }
+
+    .constitution-box {
+      background: rgba(212, 168, 47, 0.07);
+      border: 1px solid rgba(212, 168, 47, 0.3);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+
+    .constitution-box-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .constitution-box p {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .impact-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .impact-card:hover {
+      border-color: rgba(212, 168, 47, 0.35);
+      background: rgba(212, 168, 47, 0.06);
+    }
+
+    .impact-card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+    }
+
+    .impact-card-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .impact-card-label {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 6px;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width:1024px) {
+      .impact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .featured-project-content {
+        padding: 32px;
+      }
+    }
+
+    @media (max-width:640px) {
+      .impact-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">DM</div>
+        <div class="nav-logo-text"><span class="nav-logo-name">Hon. Dawson Mudenyo</span><span class="nav-logo-sub">MP
+            Aspirant · Kwanza 2027</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-outline btn-sm">Volunteer</a>
+        <a href="donate.html" class="btn btn-primary btn-sm">Support Campaign</a>
+      </div>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="projects.html">Projects</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-menu-cta">
+      <a href="contact.html" class="btn btn-outline">Volunteer</a>
+      <a href="donate.html" class="btn btn-primary">Support Campaign</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-bg projects-hero-bg" data-editable-img="projects-hero-bg"></div>
+    <div class="container page-hero-content">
+      <p class="page-hero-label">The Honest Picture</p>
+      <h1 class="page-hero-title">Kwanza's Development Priorities</h1>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Projects</span></div>
+    </div>
+  </div>
+
+  <div class="ticker-band">
+    <div class="ticker-inner">
+      <span class="ticker-item"><span class="ticker-dot"></span> Honest Assessment</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Real Priorities</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Transparent Plans</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Accountability First</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Kwanza Forward 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Dawson Mudenyo 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Honest Assessment</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Real Priorities</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Transparent Plans</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Accountability First</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Kwanza Forward 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Dawson Mudenyo 2027</span>
+    </div>
+  </div>
+
+  <section class="section-pad bg-dark">
+    <div class="container">
+      <div class="section-title-block centered reveal">
+        <div class="section-label">Why This Page Exists</div>
+        <h2 class="section-title" data-editable="priorities-title">Kwanza Deserves <span>Honesty First</span></h2>
+        <div class="gold-divider centered"></div>
+        <p class="section-subtitle" data-editable="priorities-intro">Before any candidate makes promises, residents
+          deserve an honest picture of where Kwanza Constituency stands today. This page lists the development gaps
+          Dawson has heard directly from residents across every ward — and what a strategic, accountable response looks
+          like.</p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card reveal">
+          <div class="impact-card-icon">🏥</div>
+          <div class="impact-card-number" data-count="4">0</div>
+          <div class="impact-card-label">Wards Needing Better Health Access</div>
+        </div>
+        <div class="impact-card reveal">
+          <div class="impact-card-icon">💧</div>
+          <div class="impact-card-number" data-count="40" data-suffix="%">0%</div>
+          <div class="impact-card-label">Est. Households Without Reliable Clean Water</div>
+        </div>
+        <div class="impact-card reveal">
+          <div class="impact-card-icon">🛣️</div>
+          <div class="impact-card-number" data-count="65" data-suffix="km">0km</div>
+          <div class="impact-card-label">Priority Feeder Roads Needing Grading</div>
+        </div>
+        <div class="impact-card reveal">
+          <div class="impact-card-icon">🎓</div>
+          <div class="impact-card-number" data-count="1000" data-suffix="+">0+</div>
+          <div class="impact-card-label">Students Needing Transparent Bursary Access</div>
+        </div>
+      </div>
+
+      <div class="constitution-box reveal">
+        <div class="constitution-box-label">A Note on This Page</div>
+        <p data-editable="priorities-note">These figures reflect community consultations and publicly available data,
+          and will be refined as Dawson's team continues ward-level listening sessions. The goal is not to assign blame,
+          but to build a transparent, evidence-based foundation for the manifesto — one residents can hold him
+          accountable to.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRIORITY -->
+  <section class="section-pad bg-darker">
+    <div class="container">
+      <div class="featured-project reveal">
+        <img class="featured-project-img"
+          src="https://scontent-otp1-1.xx.fbcdn.net/v/t39.30808-6/616041351_122161565072694407_5335180209586754858_n.jpg?stp=dst-jpg_tt6&cstp=mx960x1280&ctp=s960x1280&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGU20Yn6_snGiqmwVv0W1mbJ_2BjXxm0k4n_YGNfGbSTkjabELcPPxV4_lTdUz-HheXgA7PmwRQa1sekjiiCJ7f&_nc_ohc=xMRIiAjQ-s8Q7kNvwEN0kxL&_nc_oc=Adqsw7bL03vAZn0HJLQrpxOptO9njQFcAXkok6WQ6aB_ODKHqelRo70yxvCn3qtzIo8&_nc_zt=23&_nc_ht=scontent-otp1-1.xx&_nc_gid=89BRWyMiQ-ZTWvupCnbvuQ&_nc_ss=7b2a8&oh=00_Af-dDuVTCWellLJKANvHIswiWY30eygGeMBUCgdoQPY0aA&oe=6A3ACBB5"
+          alt="Road infrastructure priority" loading="lazy" />
+        <div class="featured-project-content">
+          <span class="featured-badge">Top Priority</span>
+          <h2 style="font-size:1.8rem; margin-bottom:16px;">Connecting Kwanza's Trading Centres to the Market</h2>
+          <p style="margin-bottom:20px;">Farmers across Kwanza routinely report losing produce to spoilage when feeder
+            roads become impassable during the rains. Traders describe customers who simply cannot reach trading centres
+            for weeks at a time. A coordinated, transparent road rehabilitation plan — developed with the same strategic
+            planning discipline Dawson has applied to NGO infrastructure projects internationally — is the single
+            highest-leverage investment for the constituency's economy.</p>
+          <div class="project-meta">
+            <div class="project-meta-item">📍 Constituency-wide</div>
+            <div class="project-meta-item">⏱️ Multi-year priority</div>
+            <div class="project-meta-item">🎯 Manifesto Pillar 04</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title-block centered reveal" style="margin-top:64px;">
+        <div class="section-label">Sector-by-Sector</div>
+        <h2 class="section-title">Where Kwanza Needs <span>Investment</span></h2>
+        <div class="gold-divider centered"></div>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter-btn="all" data-filter-group="priorities">All</button>
+        <button class="filter-btn" data-filter-btn="health" data-filter-group="priorities">Health</button>
+        <button class="filter-btn" data-filter-btn="water" data-filter-group="priorities">Water</button>
+        <button class="filter-btn" data-filter-btn="education" data-filter-group="priorities">Education</button>
+        <button class="filter-btn" data-filter-btn="roads" data-filter-group="priorities">Roads</button>
+        <button class="filter-btn" data-filter-btn="economy" data-filter-group="priorities">Economy</button>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card reveal" data-filter-item="roads">
+          <div class="project-card-img">
+            <img src="https://images.unsplash.com/photo-15455-8692077e9b5c?auto=format&fit=crop&w=600&q=80"
+              alt="Feeder roads" loading="lazy" />
+            <span class="project-status status-urgent">Urgent</span>
+          </div>
+          <div class="project-card-body">
+            <div class="project-category">Roads & Infrastructure</div>
+            <h3>Feeder Roads Becoming Impassable in the Rains</h3>
+            <p>Several trading centres become cut off from the highway during heavy rains, disrupting trade and access
+              to emergency services.</p>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-filter-item="health">
+          <div class="project-card-img">
+            <img src="https://images.unsplash.com/photo-1538108149393-fb95907?auto=format&fit=crop&w=600&q=80"
+              alt="Health facilities" loading="lazy" />
+            <span class="project-status status-priority">Priority</span>
+          </div>
+          <div class="project-card-body">
+            <div class="project-category">Healthcare</div>
+            <h3>Understaffed Dispensaries, Long Referral Times</h3>
+            <p>Several ward-level health facilities lack adequate staffing and equipment, forcing long, costly referrals
+              to Kitale.</p>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-filter-item="water">
+          <div class="project-card-img">
+            <img src="https://images.unsplash.com/photo-1541252260730-041?auto=format&fit=crop&w=600&q=80"
+              alt="Water access" loading="lazy" />
+            <span class="project-status status-urgent">Urgent</span>
+          </div>
+          <div class="project-card-body">
+            <div class="project-category">Clean Water</div>
+            <h3>Long Walking Distances for Safe Water</h3>
+            <p>Many households, especially women and children, still walk significant distances daily for water that
+              often isn't safe to drink.</p>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-filter-item="education">
+          <div class="project-card-img">
+            <img src="https://images.unsplash.com/photo-1497486751825-1233686d5ormat&fit=crop&w=600&q=80"
+              alt="Bursary transparency" loading="lazy" />
+            <span class="project-status status-priority">Priority</span>
+          </div>
+          <div class="project-card-body">
+            <div class="project-category">Education</div>
+            <h3>Opaque Bursary Allocation Processes</h3>
+            <p>Many eligible students and parents report unclear criteria and inconsistent communication around bursary
+              allocation.</p>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-filter-item="economy">
+          <div class="project-card-img">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=fcrop&w=600&q=80"
+              alt="Farmer market access" loading="lazy" />
+            <span class="project-status status-ongoing-need">Ongoing Need</span>
+          </div>
+          <div class="project-card-body">
+            <div class="project-category">Agriculture & Economy</div>
+            <h3>Limited Storage & Market Access for Farmers</h3>
+            <p>Post-harvest losses remain high due to inadequate storage facilities and limited bargaining power with
+              buyers.</p>
+          </div>
+        </div>
+
+        <div class="project-card reveal" data-filter-item="economy">
+          <div class="project-card-img">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c29202fit=crop&w=600&q=80"
+              alt="Youth employment" loading="lazy" />
+            <span class="project-status status-priority">Priority</span>
+          </div>
+          <div class="project-card-body">
+            <div class="project-category">Youth Employment</div>
+            <h3>Limited Skills-Training Pathways for Youth</h3>
+            <p>Many young people in Kwanza lack access to relevant vocational training tied to actual local job
+              opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-section">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <h2 class="quote-text">Naming the problem honestly is the first act of accountability. <em>Solving it is the
+            second.</em></h2>
+        <div style="margin-top:36px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="manifesto.html" class="btn btn-primary btn-lg">See the Full Manifesto</a>
+          <a href="contact.html" class="btn btn-outline btn-lg">Share Your Priorities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo" style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+              <div class="footer-logo-badge">DM</div>
+              <div class="nav-logo-text"><span class="nav-logo-name">Hon. Dawson Mudenyo</span><span
+                  class="nav-logo-sub">MP Aspirant · Kwanza 2027</span></div>
+            </div>
+            <p class="footer-desc">Faith-driven, experienced leadership for Kwanza Constituency. Fighting for
+              healthcare, education, clean water, roads, and dignity for every resident.</p>
+            <div class="footer-social">
+              <a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#"
+                class="social-icon">📸</a><a href="https://wa.me/254700000000" class="social-icon">💬</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links">
+              <a href="index.html">Home</a><a href="about.html">About Dawson</a><a href="manifesto.html">Manifesto</a><a
+                href="projects.html">Development Priorities</a><a href="news.html">News</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Get Involved</h4>
+            <div class="footer-links">
+              <a href="contact.html">Volunteer</a><a href="donate.html">Donate</a><a href="news.html">News &
+                Updates</a><a href="contact.html">Contact Us</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Contact</h4>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>Kwanza Constituency,
+                Trans-Nzoia County</span></div>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+254 700 000000</span>
+            </div>
+            <div class="footer-contact-item"><span
+                class="footer-contact-icon">✉️</span><span>info@dawsonmudenyo.org</span></div>
+            <form class="newsletter-form" id="newsletterForm" style="margin-top:16px;">
+              <input class="newsletter-input" type="email" placeholder="Your email" required />
+              <button class="newsletter-btn" type="submit">Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2027 Hon. Dawson Mudenyo Campaign. All rights reserved. | Kwanza Constituency,
+          Trans-Nzoia County</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/254700000000" class="whatsapp-float">💬</a>
+  <button class="scroll-top" id="scrollTop">↑</button>
+  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="firebase-admin.js"></script>
+</body>
+
+</html>

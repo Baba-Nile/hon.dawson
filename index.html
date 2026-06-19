@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Hon. Dawson Mudenyo — Member of Parliament Aspirant for Kwanza Constituency, 2027. Faith, governance experience, and a heart for service." />
+  <title>Hon. Dawson Mudenyo — MP Aspirant | Kwanza Constituency 2027</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <style>
+    /* ===== LOGO IMAGE ===== */
+    .nav-logo-img {
+      height: 56px;
+      width: 56px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .footer-logo-img {
+      height: 72px;
+      width: 72px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://scontent-otp1-1.xx.fbcdn.net/v/t39.30808-6/506460968_10238805676422847_4736731243540100951_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGdt3MejA6JI3TG9HTeSIorj9W2bjhcwu6P1bZuOFzC7utfcWKKmD0sfAn40pFxM9wtMKpS4CtBBQdF4twaLeG8&_nc_ohc=u8TmK-GcbO0Q7kNvwFIpXdl&_nc_oc=AdpileFH_WY7_8RRL2_TrzM9XIBF8hCDeGoZUc28Qzz4fA_SEXNIaR81BjP5rTtMGVk&_nc_zt=23&_nc_ht=scontent-otp1-1.xx&_nc_gid=M7mNtLWKCQpXRu78RmKuvw&_nc_ss=7b2a8&oh=00_Af-ZOshvuobGX5ScL-fLMhpKKilAGN-q-GqfQ7y3KUdudA&oe=6A3AB04B') center/cover no-repeat;
+      transform: scale(1.06);
+      transition: transform 8s ease;
+    }
+
+    .hero.loaded .hero-bg {
+      transform: scale(1);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(6, 15, 34, 0.95) 0%, rgba(10, 33, 72, 0.80) 50%, rgba(0, 0, 0, 0.6) 100%);
+    }
+
+    #heroParticles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(212, 168, 47, 0.15);
+      border: 1px solid rgba(212, 168, 47, 0.4);
+      border-radius: 50px;
+      padding: 8px 20px;
+      margin-bottom: 28px;
+      animation: fadeSlideDown 0.8s ease forwards;
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: blink 1.4s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.3
+      }
+    }
+
+    .hero-tag-text {
+      font-family: var(--font-accent, var(--font-body));
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    @keyframes fadeSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 16px;
+      animation: fadeSlideUp 0.9s 0.2s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-title .accent {
+      color: var(--gold);
+      display: block;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-typing-wrap {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 24px;
+      animation: fadeSlideUp 0.9s 0.35s ease forwards;
+      opacity: 0;
+      min-height: 40px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 560px;
+      line-height: 1.9;
+      margin-bottom: 44px;
+      animation: fadeSlideUp 0.9s 0.45s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeSlideUp 0.9s 0.55s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: fadeIn 1.5s 1s ease forwards;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    @keyframes scrollPulse {
+
+      0%,
+      100% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scaleY(0.6);
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .hero-stats {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding-right: 40px;
+      z-index: 2;
+    }
+
+    .hero-stat-item {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px 22px;
+      text-align: center;
+      animation: fadeSlideUp 0.9s ease forwards;
+      opacity: 0;
+      margin-bottom: 14px;
+    }
+
+    .hero-stat-item:nth-child(1) {
+      animation-delay: 0.7s;
+    }
+
+    .hero-stat-item:nth-child(2) {
+      animation-delay: 0.85s;
+    }
+
+    .hero-stat-item:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .hero-stat-lbl {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ===== INTRO SECTION ===== */
+    .intro-section {
+      background: var(--charcoal-mid);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .intro-image-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      height: 480px;
+      position: relative;
+    }
+
+    .intro-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6, 15, 34, 0.55), transparent 60%);
+    }
+
+    .intro-badge {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      background: rgba(10, 33, 72, 0.95);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 16px 22px;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+    }
+
+    .intro-badge-num {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .intro-badge-lbl {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .intro-quote {
+      margin: 28px 0;
+      padding: 20px 24px;
+      border-left: 3px solid var(--gold);
+      background: rgba(212, 168, 47, 0.06);
+      border-radius: 0 10px 10px 0;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    /* ===== PAGES INTRO SECTION ===== */
+    .pages-section {
+      background: var(--charcoal);
+    }
+
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .page-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: var(--transition-fast);
+      text-decoration: none;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .page-card:hover {
+      border-color: rgba(212, 168, 47, 0.3);
+      background: rgba(212, 168, 47, 0.05);
+      transform: translateY(-4px);
+    }
+
+    .page-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .page-card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .page-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .page-card-desc {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .page-card-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .page-card.featured {
+      border-color: rgba(212, 168, 47, 0.25);
+      background: rgba(212, 168, 47, 0.07);
+    }
+
+    .page-card.featured .page-card-title {
+      color: var(--gold);
+    }
+
+    .stats-band {
+      background: linear-gradient(135deg, var(--teal-primary), var(--olive-dark));
+      border-top: 1px solid rgba(212, 168, 47, 0.2);
+      border-bottom: 1px solid rgba(212, 168, 47, 0.2);
+      padding: 64px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .cta-banner {
+      background: url('https://scontent-otp1-1.xx.fbcdn.net/v/t39.30808-6/506460968_10238805676422847_4736731243540100951_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=106&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeGdt3MejA6JI3TG9HTeSIorj9W2bjhcwu6P1bZuOFzC7utfcWKKmD0sfAn40pFxM9wtMKpS4CtBBQdF4twaLeG8&_nc_ohc=u8TmK-GcbO0Q7kNvwFIpXdl&_nc_oc=AdpileFH_WY7_8RRL2_TrzM9XIBF8hCDeGoZUc28Qzz4fA_SEXNIaR81BjP5rTtMGVk&_nc_zt=23&_nc_ht=scontent-otp1-1.xx&_nc_gid=M7mNtLWKCQpXRu78RmKuvw&_nc_ss=7b2a8&oh=00_Af-ZOshvuobGX5ScL-fLMhpKKilAGN-q-GqfQ7y3KUdudA&oe=6A3AB04B') center/cover no-repeat;
+      position: relative;
+    }
+
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(6, 15, 34, 0.94) 0%, rgba(10, 33, 72, 0.85) 100%);
+    }
+
+    .cta-banner-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .pills-section {
+      background: var(--charcoal);
+      padding: 48px 0;
+    }
+
+    .pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .promise-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid rgba(212, 168, 47, 0.35);
+      border-radius: 50px;
+      background: rgba(212, 168, 47, 0.08);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+
+    .promise-pill:hover {
+      background: rgba(212, 168, 47, 0.18);
+      border-color: var(--gold);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .promise-pill-icon {
+      font-size: 1rem;
+    }
+
+    .countdown-section {
+      background: linear-gradient(135deg, rgba(6, 15, 34, 0.98), rgba(0, 0, 0, 0.9));
+      border-top: 1px solid rgba(212, 168, 47, 0.15);
+      border-bottom: 1px solid rgba(212, 168, 47, 0.15);
+      padding: 72px 0;
+      text-align: center;
+    }
+
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-block {
+      background: rgba(212, 168, 47, 0.08);
+      border: 1px solid rgba(212, 168, 47, 0.25);
+      border-radius: 16px;
+      padding: 28px 36px;
+      min-width: 110px;
+      position: relative;
+    }
+
+    .countdown-num {
+      font-family: var(--font-heading);
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+    }
+
+    .countdown-lbl {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 8px;
+      display: block;
+    }
+
+    .countdown-sep {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(212, 168, 47, 0.4);
+      align-self: flex-start;
+      padding-top: 20px;
+    }
+
+    .vision-strip {
+      background: var(--charcoal-mid);
+      padding: 64px 0;
+    }
+
+    .vision-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 168, 47, 0.12);
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    .vision-icon-wrap {
+      flex-shrink: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(212, 168, 47, 0.1);
+      border: 2px solid rgba(212, 168, 47, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      animation: pulse-ring 3s ease infinite;
+    }
+
+    @keyframes pulse-ring {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(212, 168, 47, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 0 16px rgba(212, 168, 47, 0);
+      }
+    }
+
+    .vision-text h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .vision-text p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .vision-cta {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-stats {
+        display: none;
+      }
+
+      .pages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .intro-image-wrap {
+        height: 360px;
+      }
+
+      .vision-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 36px 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .pages-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        max-width: 280px;
+      }
+
+      .hero-cta .btn {
+        justify-content: center;
+      }
+
+      .countdown-grid {
+        gap: 16px;
+      }
+
+      .countdown-block {
+        padding: 20px 24px;
+        min-width: 80px;
+      }
+
+      .countdown-num {
+        font-size: 2.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+
+      .countdown-sep {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar" data-transparent="true">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">DM</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Dawson Mudenyo</span>
+          <span class="nav-logo-sub">MP Aspirant · Kwanza 2027</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="projects.html">Projects</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-outline btn-sm">Volunteer</a>
+        <a href="donate.html" class="btn btn-primary btn-sm">Support Campaign</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="projects.html">Projects</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-menu-cta">
+      <a href="contact.html" class="btn btn-outline">Volunteer</a>
+      <a href="donate.html" class="btn btn-primary">Support Campaign</a>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="heroSection">
+    <div class="hero-bg" data-editable-img="hero-bg"></div>
+    <canvas id="heroParticles"></canvas>
+    <div class="container hero-content">
+      <div class="hero-tag">
+        <div class="hero-tag-dot"></div>
+        <span class="hero-tag-text" data-editable="hero-tag" data-editable-singleline="true">Kwanza Constituency · 2027
+          General Election</span>
+      </div>
+      <h1 class="hero-title" data-editable="hero-title">
+        Hon. Dawson Mudenyo for
+        <span class="accent">Kwanza, MP</span>
+      </h1>
+      <div class="hero-typing-wrap">
+        Building Kwanza with <span class="typing-text"
+          data-typing='["Faith & Integrity", "Real Governance Experience", "Global Best Practice", "Servant Leadership", "A Heart for the People"]'>Faith
+          & Integrity</span>
+      </div>
+      <p class="hero-subtitle" data-editable="hero-subtitle">
+        Born and raised in Lunyu as the son of a Bishop, Dawson Mudenyo brings decades of international NGO governance
+        experience home to Kwanza — to fight for the schools, clinics, roads, and livelihoods our people deserve.
+      </p>
+      <div class="hero-cta">
+        <a href="about.html" class="btn btn-primary btn-lg">
+          <span>👤</span> Meet Dawson
+        </a>
+        <a href="manifesto.html" class="btn btn-outline btn-lg">
+          <span>📋</span> Read Manifesto
+        </a>
+        <a href="donate.html" class="btn btn-white btn-lg">
+          <span>🤝</span> Support the Campaign
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-item">
+        <div class="hero-stat-num" data-count="203821" data-suffix="+">0+</div>
+        <div class="hero-stat-lbl">Kwanza Residents</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-num" data-count="20" data-suffix="+ yrs">0</div>
+        <div class="hero-stat-lbl">Governance Experience</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-num" data-count="2027">0</div>
+        <div class="hero-stat-lbl">Election Year</div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" onclick="document.getElementById('tickerBand').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== TICKER BAND ===== -->
+  <div class="ticker-band" id="tickerBand">
+    <div class="ticker-inner" id="tickerInner">
+      <span class="ticker-item"><span class="ticker-dot"></span> Kwanza Forward 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Faith in Service</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Governance That Delivers</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Schools · Clinics · Roads</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Water for Every Home</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Youth & Women Empowerment</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Global Experience, Local Heart</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Dawson Mudenyo 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Kwanza Forward 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Faith in Service</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Governance That Delivers</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Schools · Clinics · Roads</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Water for Every Home</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Youth & Women Empowerment</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Global Experience, Local Heart</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Dawson Mudenyo 2027</span>
+    </div>
+  </div>
+
+  <!-- ===== COUNTDOWN TO ELECTION ===== -->
+  <section class="countdown-section">
+    <div class="container">
+      <div class="section-label" style="text-align:center;">Election Countdown</div>
+      <h2 class="section-title" style="text-align:center; max-width:600px; margin:0 auto 8px;">Days Until the <span>2027
+          Election</span></h2>
+      <div class="countdown-grid">
+        <div class="countdown-block"><span class="countdown-num" id="cd-days">--</span><span
+            class="countdown-lbl">Days</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-num" id="cd-hours">--</span><span
+            class="countdown-lbl">Hours</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-num" id="cd-mins">--</span><span
+            class="countdown-lbl">Minutes</span></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-block"><span class="countdown-num" id="cd-secs">--</span><span
+            class="countdown-lbl">Seconds</span></div>
+      </div>
+      <p style="text-align:center; color:rgba(255,255,255,0.4); font-size:0.82rem; margin-top:24px;">Kenya General
+        Election · August 9, 2027</p>
+    </div>
+  </section>
+
+  <!-- ===== INTRODUCTION SECTION ===== -->
+  <section class="section-pad intro-section">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="reveal from-left">
+          <div class="intro-image-wrap" data-editable-img="intro-photo">
+            <img src="duson.jpg" alt="Hon. Dawson Mudenyo" loading="lazy" />
+            <div class="intro-badge">
+              <div class="intro-badge-num">2027</div>
+              <div class="intro-badge-lbl">Kwanza Forward</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal from-right">
+          <div class="section-label">Who Is Dawson Mudenyo?</div>
+          <h2 class="section-title">A Son of <span>Lunyu, Shaped by Faith</span></h2>
+          <div class="gold-divider"></div>
+          <p data-editable="intro-p1" style="margin-bottom: 20px; color: rgba(255,255,255,0.75); line-height: 1.9;">
+            Born and raised in Lunyu as the son of a Bishop, Dawson Mudenyo grew up shaped by faith, humility,
+            discipline, and a deep heart for service. From Liyavo Primary School to Kitale Day High School, the values
+            of his community became the foundation of who he is today.
+          </p>
+          <div class="intro-quote" data-editable="intro-quote">
+            "My worldview expanded at a missionary school in Chicago, Illinois — but everything I learned out there, I
+            am bringing back home, to Kwanza."
+          </div>
+          <p data-editable="intro-p2" style="color: rgba(255,255,255,0.65); line-height: 1.9; margin-bottom: 32px;">
+            Today, as an international NGO expert, Dawson advises organisations on governance, strategic planning, and
+            capacity development. He is running for Member of Parliament for Kwanza in 2027 to bring that same
+            discipline, transparency, and global best practice directly to the people who raised him.
+          </p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="about.html" class="btn btn-primary">Learn His Story</a>
+            <a href="manifesto.html" class="btn btn-outline">Read the Manifesto</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPLORE PAGES ===== -->
+  <section class="section-pad pages-section">
+    <div class="container">
+      <div class="section-title-block centered">
+        <div class="section-label">Explore the Campaign</div>
+        <h2 class="section-title">Everything You Need to <span>Know</span></h2>
+        <p class="section-subtitle">Learn about Dawson's journey, his plan for Kwanza, and how you can be part of
+          building a constituency that works for everyone.</p>
+      </div>
+      <div class="pages-grid">
+        <a href="about.html" class="page-card featured reveal">
+          <span class="page-card-icon">👤</span>
+          <h3 class="page-card-title">About Dawson</h3>
+          <p class="page-card-desc">From Lunyu to Chicago and back — the story of faith, discipline, and global
+            governance experience behind the candidate.</p>
+          <span class="page-card-link">Read His Story →</span>
+        </a>
+        <a href="manifesto.html" class="page-card reveal">
+          <span class="page-card-icon">📋</span>
+          <h3 class="page-card-title">The Manifesto</h3>
+          <p class="page-card-desc">A clear, costed plan for healthcare, education, water, roads, and jobs across every
+            ward in Kwanza Constituency.</p>
+          <span class="page-card-link">View the Plan →</span>
+        </a>
+        <a href="projects.html" class="page-card reveal">
+          <span class="page-card-icon">🏗️</span>
+          <h3 class="page-card-title">Development Priorities</h3>
+          <p class="page-card-desc">What Kwanza has been promised before, what was never delivered, and what real
+            accountability looks like going forward.</p>
+          <span class="page-card-link">See the Record →</span>
+        </a>
+        <a href="news.html" class="page-card reveal">
+          <span class="page-card-icon">📰</span>
+          <h3 class="page-card-title">News & Updates</h3>
+          <p class="page-card-desc">Campaign trail updates, community visits, and the latest from Dawson and his team
+            across Kwanza.</p>
+          <span class="page-card-link">Stay Updated →</span>
+        </a>
+        <a href="donate.html" class="page-card reveal">
+          <span class="page-card-icon">🤝</span>
+          <h3 class="page-card-title">Support the Campaign</h3>
+          <p class="page-card-desc">Every contribution — big or small — helps bring this vision of accountable,
+            faith-driven leadership to Kwanza.</p>
+          <span class="page-card-link">Give Today →</span>
+        </a>
+        <a href="contact.html" class="page-card reveal">
+          <span class="page-card-icon">📞</span>
+          <h3 class="page-card-title">Get In Touch</h3>
+          <p class="page-card-desc">Join the movement, volunteer in your area, or simply reach out to the campaign team
+            with questions.</p>
+          <span class="page-card-link">Contact Us →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAMPAIGN PROMISE PILLS ===== -->
+  <section class="pills-section">
+    <div class="container">
+      <div class="section-label" style="text-align:center; margin-bottom:24px;">Core Priorities</div>
+      <div class="pills-wrap">
+        <div class="promise-pill"><span class="promise-pill-icon">🏥</span> Accessible Healthcare</div>
+        <div class="promise-pill"><span class="promise-pill-icon">🎓</span> Quality Education & Bursaries</div>
+        <div class="promise-pill"><span class="promise-pill-icon">💧</span> Clean Water for Every Home</div>
+        <div class="promise-pill"><span class="promise-pill-icon">🛣️</span> Better Roads & Infrastructure</div>
+        <div class="promise-pill"><span class="promise-pill-icon">🌾</span> Support for Farmers</div>
+        <div class="promise-pill"><span class="promise-pill-icon">💼</span> Youth Employment</div>
+        <div class="promise-pill"><span class="promise-pill-icon">👩‍👧</span> Women Empowerment</div>
+        <div class="promise-pill"><span class="promise-pill-icon">🔒</span> Community Security</div>
+        <div class="promise-pill"><span class="promise-pill-icon">⚖️</span> Transparent Governance</div>
+        <div class="promise-pill"><span class="promise-pill-icon">🏟️</span> Sports & Youth Talent</div>
+        <div class="promise-pill"><span class="promise-pill-icon">📡</span> Digital Access for All</div>
+        <div class="promise-pill"><span class="promise-pill-icon">🙏</span> Faith-Driven Leadership</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAND ===== -->
+  <section class="stats-band">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-block reveal">
+          <div class="stat-number" data-count="203821" data-suffix="+">0+</div>
+          <div class="stat-label">Kwanza Residents</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">Wards in Kwanza</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-count="20" data-suffix="+">0</div>
+          <div class="stat-label">Years NGO & Governance Work</div>
+        </div>
+        <div class="stat-block reveal">
+          <div class="stat-number" data-count="2027">0</div>
+          <div class="stat-label">Election Year</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISION STRIP ===== -->
+  <section class="vision-strip">
+    <div class="container">
+      <div class="vision-inner reveal">
+        <div class="vision-icon-wrap">🌍</div>
+        <div class="vision-text">
+          <h3>Global Exposure, Local Commitment</h3>
+          <p data-editable="vision-text">Dawson's time at a missionary school in Chicago, Illinois immersed him in
+            humanitarian work across the world. As an international NGO expert, he now advises organisations on
+            governance, strategic planning, and capacity development — expertise he is bringing directly to Kwanza
+            Constituency.</p>
+        </div>
+        <div class="vision-cta">
+          <a href="about.html" class="btn btn-teal btn-lg">Full Biography</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container cta-banner-content">
+      <div class="section-label" style="margin: 0 auto 22px; display:inline-flex;">Join the Movement</div>
+      <h2 class="section-title" style="max-width:760px; margin:0 auto 20px;">Kwanza Deserves Leadership <span>That
+          Delivers</span></h2>
+      <p class="section-subtitle" style="margin:0 auto 40px;">Whether you volunteer your time, spread the word, or
+        support the campaign financially — every contribution moves us closer to a Kwanza that works for everyone.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="donate.html" class="btn btn-primary btn-xl">Support the Campaign</a>
+        <a href="contact.html" class="btn btn-outline btn-xl">Volunteer Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <div class="footer-logo-badge">DM</div>
+              <div class="nav-logo-text">
+                <span class="nav-logo-name">Hon. Dawson Mudenyo</span>
+                <span class="nav-logo-sub">MP Aspirant · Kwanza 2027</span>
+              </div>
+            </div>
+            <p class="footer-desc" data-editable="footer-desc">Faith-driven, experienced leadership for Kwanza
+              Constituency. Fighting for healthcare, education, clean water, roads, and dignity for every resident —
+              built on global governance experience and a heart shaped by service.</p>
+            <div class="footer-social">
+              <a href="#" class="social-icon" title="Facebook">📘</a>
+              <a href="#" class="social-icon" title="Twitter/X">🐦</a>
+              <a href="#" class="social-icon" title="Instagram">📸</a>
+              <a href="https://wa.me/254700000000" class="social-icon" title="WhatsApp">💬</a>
+              <a href="#" class="social-icon" title="YouTube">▶️</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links">
+              <a href="index.html">Home</a>
+              <a href="about.html">About Dawson</a>
+              <a href="manifesto.html">Manifesto</a>
+              <a href="projects.html">Development Priorities</a>
+              <a href="news.html">News</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Get Involved</h4>
+            <div class="footer-links">
+              <a href="contact.html">Volunteer</a>
+              <a href="donate.html">Donate</a>
+              <a href="news.html">News & Updates</a>
+              <a href="contact.html">Contact Us</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Contact</h4>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon">📍</span>
+              <span>Kwanza Constituency, Trans-Nzoia County</span>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon">📞</span>
+              <span>+254 700 000000</span>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon">✉️</span>
+              <span>info@dawsonmudenyo.org</span>
+            </div>
+            <h4 class="footer-heading" style="margin-top:24px;">Newsletter</h4>
+            <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); margin-bottom:0;">Get campaign updates straight to
+              your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input class="newsletter-input" type="email" placeholder="Your email" required />
+              <button class="newsletter-btn" type="submit">Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2027 Hon. Dawson Mudenyo Campaign. All rights reserved. | Kwanza Constituency,
+          Trans-Nzoia County</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/254700000000?text=Hello%2C%20I%20want%20to%20support%20Hon.%20Dawson%20Mudenyo%27s%20campaign!"
+    class="whatsapp-float" title="Chat on WhatsApp">💬</a>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="firebase-admin.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      const heroSection = document.getElementById('heroSection');
+      const heroBg = heroSection ? heroSection.querySelector('.hero-bg') : null;
+      if (heroBg) {
+        const scrolled = window.pageYOffset;
+        heroBg.style.transform = `scale(1) translateY(${scrolled * 0.3}px)`;
+      }
+    }, { passive: true });
+
+    document.getElementById('heroSection').classList.add('loaded');
+
+    (function () {
+      const canvas = document.getElementById('heroParticles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let animId;
+
+      function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+      resize();
+      window.addEventListener('resize', resize, { passive: true });
+
+      function createParticle() {
+        return { x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 + 0.4, dx: (Math.random() - 0.5) * 0.4, dy: -Math.random() * 0.5 - 0.2, alpha: Math.random() * 0.5 + 0.1 };
+      }
+      for (let i = 0; i < 70; i++) particles.push(createParticle());
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(212,168,47,${p.alpha})`;
+          ctx.fill();
+          p.x += p.dx; p.y += p.dy;
+          if (p.y < -2) { Object.assign(p, createParticle(), { y: canvas.height + 2 }); }
+          if (p.x < -2 || p.x > canvas.width + 2) { Object.assign(p, createParticle()); }
+        });
+        animId = requestAnimationFrame(draw);
+      }
+      draw();
+
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) { if (!animId) draw(); }
+        else { cancelAnimationFrame(animId); animId = null; }
+      });
+      obs.observe(canvas);
+    })();
+
+    (function () {
+      const election = new Date('2027-08-09T00:00:00+03:00');
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        const now = new Date();
+        const diff = election - now;
+        if (diff <= 0) {
+          document.getElementById('cd-days').textContent = '00';
+          document.getElementById('cd-hours').textContent = '00';
+          document.getElementById('cd-mins').textContent = '00';
+          document.getElementById('cd-secs').textContent = '00';
+          return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cd-days').textContent = pad(d);
+        document.getElementById('cd-hours').textContent = pad(h);
+        document.getElementById('cd-mins').textContent = pad(m);
+        document.getElementById('cd-secs').textContent = pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+</body>
+
+</html>

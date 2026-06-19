@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Hon. Dawson Mudenyo — MP Aspirant | Kwanza Constituency 2027</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <style>
+    .about-hero-bg {
+      background: url('https://scontent-otp1-1.xx.fbcdn.net/v/t39.30808-6/511705798_10239097471717547_112122467146995361_n.jpg?stp=c256.0.1536.1536a_cp6_dst-jpg_tt6&cstp=mx1536x1536&ctp=s552x414&_nc_cat=100&ccb=1-7&_nc_sid=714c7a&_nc_eui2=AeEXdXwDDqVTjlq_Ohp-XXK1P_LrcS-3cqc_8utxL7dyp9-INPOksT6wXBiI-gfApU-nAk0BlZFEVOvtOyGMmuAE&_nc_ohc=2Tckc5yQu9sQ7kNvwHHhMOh&_nc_oc=Adrw2_p-ieiRC-iG5wY_KyYk-37_RiP3lJsf8gaUPgtueVdzdIWxmdUrdMoMUoyIWnM&_nc_zt=23&_nc_ht=scontent-otp1-1.xx&_nc_gid=eX6AV2V1CyOZ2-h3UegvsQ&_nc_ss=7b2a8&oh=00_Af8xyeIaTOfe6JNdiVndYcV2qGP05EdXuQT-MynfHJeEJg&oe=6A3A9BAE') center 30%/cover;
+    }
+
+    .nav-logo-img {
+      height: 56px;
+      width: 56px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .footer-logo-img {
+      height: 72px;
+      width: 72px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .ticker-band {
+      background: var(--gold);
+      overflow: hidden;
+      padding: 14px 0;
+    }
+
+    .ticker-inner {
+      display: flex;
+      gap: 0;
+      animation: ticker 28s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 40px;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #052918;
+    }
+
+    .ticker-dot {
+      width: 6px;
+      height: 6px;
+      background: #052918;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .profile-img-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 460px;
+      height: 560px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      display: block;
+    }
+
+    .profile-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--charcoal);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      text-align: center;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .profile-badge-num {
+      font-size: 2.2rem;
+    }
+
+    .profile-badge-lbl {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    .profile-frame {
+      position: absolute;
+      top: -12px;
+      left: -12px;
+      right: 12px;
+      bottom: 12px;
+      border: 2px solid rgba(212, 168, 47, 0.3);
+      border-radius: var(--radius-lg);
+      pointer-events: none;
+    }
+
+    .share-strip {
+      position: absolute;
+      left: -52px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .share-btn:hover {
+      background: rgba(212, 168, 47, 0.2);
+      border-color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    .value-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      transition: var(--transition-fast);
+    }
+
+    .value-card:hover {
+      border-color: rgba(212, 168, 47, 0.3);
+      background: rgba(212, 168, 47, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .value-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .value-title {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.95rem;
+    }
+
+    .value-desc {
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .achievements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .achievement-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 22px;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      transition: var(--transition-fast);
+    }
+
+    .achievement-item:hover {
+      background: rgba(212, 168, 47, 0.07);
+      transform: translateX(4px);
+    }
+
+    .achievement-icon {
+      font-size: 1.4rem;
+    }
+
+    .achievement-text {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .facts-strip {
+      background: rgba(212, 168, 47, 0.06);
+      border-top: 1px solid rgba(212, 168, 47, 0.12);
+      border-bottom: 1px solid rgba(212, 168, 47, 0.12);
+      padding: 48px 0;
+    }
+
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .fact-item {
+      text-align: center;
+    }
+
+    .fact-num {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+    }
+
+    .fact-lbl {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .msg-card {
+      margin-top: 40px;
+      padding: 28px;
+      background: rgba(212, 168, 47, 0.08);
+      border: 1px solid rgba(212, 168, 47, 0.3);
+      border-radius: var(--radius-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .msg-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      left: 16px;
+      font-size: 8rem;
+      font-family: Georgia, serif;
+      color: rgba(212, 168, 47, 0.08);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .msg-card h4 {
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: var(--font-heading);
+    }
+
+    .msg-card p {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.9;
+    }
+
+    .msg-card .msg-author {
+      margin-top: 12px;
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .vision-strip {
+      background: var(--charcoal-mid);
+      padding: 64px 0;
+    }
+
+    .vision-inner {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 168, 47, 0.12);
+      border-radius: 20px;
+      padding: 48px;
+    }
+
+    .vision-icon-wrap {
+      flex-shrink: 0;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: rgba(212, 168, 47, 0.1);
+      border: 2px solid rgba(212, 168, 47, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      animation: pulse-ring 3s ease infinite;
+    }
+
+    @keyframes pulse-ring {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(212, 168, 47, 0.3)
+      }
+
+      50% {
+        box-shadow: 0 0 0 16px rgba(212, 168, 47, 0)
+      }
+    }
+
+    .vision-text h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .vision-text p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    @media (max-width: 1024px) {
+      .facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .vision-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 36px 24px;
+      }
+
+      .share-strip {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">DM</div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Hon. Dawson Mudenyo</span>
+          <span class="nav-logo-sub">MP Aspirant · Kwanza 2027</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="projects.html">Projects</a>
+        <a href="news.html">News</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-outline btn-sm">Volunteer</a>
+        <a href="donate.html" class="btn btn-primary btn-sm">Support Campaign</a>
+      </div>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="projects.html">Projects</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-menu-cta">
+      <a href="contact.html" class="btn btn-outline">Volunteer</a>
+      <a href="donate.html" class="btn btn-primary">Support Campaign</a>
+    </div>
+  </div>
+
+  <!-- ===== PAGE HERO ===== -->
+  <div class="page-hero">
+    <div class="page-hero-bg about-hero-bg" data-editable-img="about-hero-bg"></div>
+    <div class="container page-hero-content">
+      <p class="page-hero-label">Meet the Candidate</p>
+      <h1 class="page-hero-title">About Hon. Dawson Mudenyo</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>About</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TICKER BAND ===== -->
+  <div class="ticker-band">
+    <div class="ticker-inner">
+      <span class="ticker-item"><span class="ticker-dot"></span> Kwanza Forward 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Faith in Service</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Governance That Delivers</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Schools · Clinics · Roads</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Water for Every Home</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Global Experience, Local Heart</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Dawson Mudenyo 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Kwanza Forward 2027</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Faith in Service</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Governance That Delivers</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Schools · Clinics · Roads</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Water for Every Home</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Global Experience, Local Heart</span>
+      <span class="ticker-item"><span class="ticker-dot"></span> Dawson Mudenyo 2027</span>
+    </div>
+  </div>
+
+  <!-- ===== QUICK FACTS ===== -->
+  <section class="facts-strip">
+    <div class="container">
+      <div class="facts-grid">
+        <div class="fact-item reveal"><span class="fact-num" data-count="203821" data-suffix="+">0+</span><span
+            class="fact-lbl">Kwanza Residents</span></div>
+        <div class="fact-item reveal"><span class="fact-num" data-count="20" data-suffix="+">0</span><span
+            class="fact-lbl">Years Governance Work</span></div>
+        <div class="fact-item reveal"><span class="fact-num" data-count="4">0</span><span class="fact-lbl">Wards in
+            Kwanza</span></div>
+        <div class="fact-item reveal"><span class="fact-num" data-count="2027">0</span><span class="fact-lbl">Election
+            Year</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BIO SECTION ===== -->
+  <section class="section-pad bg-dark">
+    <div class="container">
+      <div class="grid-2" style="gap:80px; align-items:center;">
+        <div class="reveal from-left" style="text-align:center; position:relative;">
+          <div class="profile-img-wrap">
+            <div class="profile-frame"></div>
+            <div class="share-strip">
+              <a href="https://wa.me/254700000000?text=Check%20out%20Hon.%20Dawson%20Mudenyo's%20campaign!"
+                class="share-btn" title="Share on WhatsApp">💬</a>
+              <a href="#" class="share-btn" title="Share on Facebook">📘</a>
+              <a href="#" class="share-btn" title="Share on X">🐦</a>
+            </div>
+            <div class="profile-img-wrap" data-editable-img="profile-photo" style="display:block;">
+              <img class="profile-img" src="dawson profile.jpg" alt="Hon. Dawson Mudenyo" loading="lazy" />
+            </div>
+            <div class="profile-badge">
+              <div class="profile-badge-num">2027</div>
+              <div class="profile-badge-lbl">Kwanza Forward</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal from-right">
+          <div class="section-label">Who Is Dawson Mudenyo?</div>
+          <h2 class="section-title">Faith, Discipline <span>& Service</span></h2>
+          <div class="gold-divider"></div>
+          <p data-editable="bio-p1" style="margin-bottom:16px;">Born and raised in Lunyu as the son of a Bishop, Dawson
+            Mudenyo grew up shaped by faith, humility, discipline, and a deep heart for service. From Liyavo Primary
+            School to Kitale Day High School, the values instilled by his family and community became the unshakeable
+            foundation of who he is today.</p>
+          <p data-editable="bio-p2" style="margin-bottom:16px;">His worldview expanded dramatically at a missionary
+            school in Chicago, Illinois, where he immersed himself in global humanitarian work. That experience opened
+            his eyes to what disciplined, accountable governance can achieve — and planted the conviction that Kwanza
+            deserves the same standard of leadership.</p>
+          <p data-editable="bio-p3" style="margin-bottom:32px;">Today, as an international NGO expert, Dawson advises
+            organisations around the world on governance, strategic planning, and capacity development. He is bringing
+            two decades of that hard-won expertise home — to fight for Kwanza Constituency as its Member of Parliament
+            in the 2027 General Election.</p>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="manifesto.html" class="btn btn-primary">View Manifesto</a>
+            <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION & GLOBAL EXPOSURE ===== -->
+  <section class="section-pad bg-darker">
+    <div class="container">
+      <div class="section-title-block centered reveal">
+        <div class="section-label">Education & Global Exposure</div>
+        <h2 class="section-title">From Liyavo to <span>Lake Michigan</span></h2>
+        <div class="gold-divider centered"></div>
+        <p class="section-subtitle">A foundation built locally, and sharpened on the international stage.</p>
+      </div>
+      <div class="grid-3">
+        <div class="challenge-card reveal">
+          <div class="challenge-icon">📚</div>
+          <h4>Liyavo Primary School</h4>
+          <p>Dawson's earliest education took root in Lunyu, where the discipline and community values of his upbringing
+            were first put into practice in the classroom.</p>
+        </div>
+        <div class="challenge-card reveal">
+          <div class="challenge-icon">🎓</div>
+          <h4>Kitale Day High School</h4>
+          <p>Secondary education in Kitale sharpened his focus and ambition, preparing him for the wider world while
+            keeping him rooted in Trans-Nzoia's communities.</p>
+        </div>
+        <div class="challenge-card reveal">
+          <div class="challenge-icon">🌍</div>
+          <h4>Missionary School, Chicago, IL</h4>
+          <p data-editable="chicago-card">His time at a missionary school in Chicago, Illinois immersed him in global
+            humanitarian work — exposure that now informs every governance recommendation he makes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CORE VALUES ===== -->
+  <section class="section-pad bg-dark">
+    <div class="container">
+      <div class="section-title-block centered reveal">
+        <div class="section-label">Core Values</div>
+        <h2 class="section-title">What Dawson <span>Stands For</span></h2>
+        <div class="gold-divider centered"></div>
+      </div>
+      <div class="grid-3">
+        <div class="value-card reveal">
+          <div class="value-icon">🙏</div>
+          <div>
+            <div class="value-title">Faith & Integrity</div>
+            <p class="value-desc">Raised as the son of a Bishop, Dawson leads with honesty, humility, and an unwavering
+              commitment to serve — not to be served.</p>
+          </div>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon">⚖️</div>
+          <div>
+            <div class="value-title">Transparent Governance</div>
+            <p class="value-desc">Years of advising NGOs on governance and accountability taught Dawson that
+              transparency is not optional — it is the foundation of trust.</p>
+          </div>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon">🌍</div>
+          <div>
+            <div class="value-title">Global Best Practice</div>
+            <p class="value-desc">From Chicago boardrooms to Kwanza's villages, Dawson applies the same rigorous
+              standards of strategic planning and capacity development everywhere he works.</p>
+          </div>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon">🤝</div>
+          <div>
+            <div class="value-title">Servant Leadership</div>
+            <p class="value-desc">An MP should be close to the people. Dawson pledges an open door and a present voice
+              in every ward of Kwanza Constituency.</p>
+          </div>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon">🏗️</div>
+          <div>
+            <div class="value-title">Capacity Development</div>
+            <p class="value-desc">Real development isn't a one-time handout — it's building lasting institutions and
+              skills that outlast any single term in office.</p>
+          </div>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-icon">👨‍👩‍👧‍👦</div>
+          <div>
+            <div class="value-title">Community Roots</div>
+            <p class="value-desc">Dawson never forgot Lunyu. Every policy position is tested against one question: does
+              this help the people who raised me?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISION STRIP ===== -->
+  <section class="vision-strip">
+    <div class="container">
+      <div class="vision-inner reveal">
+        <div class="vision-icon-wrap">🏛️</div>
+        <div class="vision-text">
+          <h3>Leadership That Brings the World Home</h3>
+          <p>Dawson's pledge is simple: take everything learned from advising international organisations on governance
+            and strategy, and apply it directly to the schools, clinics, and roads of Kwanza. That is what real
+            representation looks like.</p>
+        </div>
+        <div style="flex-shrink:0;">
+          <a href="manifesto.html" class="btn btn-primary">See the Plan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE & PLEDGES ===== -->
+  <section class="section-pad bg-dark">
+    <div class="container">
+      <div class="grid-2" style="gap:72px; align-items:start;">
+        <div class="reveal from-left">
+          <div class="section-label">Leadership Journey</div>
+          <h2 class="section-title">From Lunyu to <span>National Service</span></h2>
+          <div class="gold-divider"></div>
+          <p style="margin-bottom:44px;">Dawson's path to leadership was built through faith, education, and years of
+            international governance work — and a constant pull back home to Kwanza.</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">Roots</div>
+              <div class="timeline-title">Born in Lunyu, Son of a Bishop</div>
+              <p class="timeline-desc">Raised in a household defined by faith, humility, and service — values that
+                shaped every decision Dawson would go on to make.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">Education</div>
+              <div class="timeline-title">Liyavo Primary to Kitale Day High School</div>
+              <p class="timeline-desc">A local education grounded in discipline and community values — the foundation
+                for everything that followed.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">Global Exposure</div>
+              <div class="timeline-title">Missionary School, Chicago, Illinois</div>
+              <p class="timeline-desc">Immersion in international humanitarian work expanded Dawson's worldview and
+                sharpened his understanding of what disciplined institutions can achieve.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">Career</div>
+              <div class="timeline-title">International NGO Governance Expert</div>
+              <p class="timeline-desc">Advised organisations across the globe on governance, strategic planning, and
+                capacity development — expertise now aimed squarely at Kwanza's challenges.</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-year">2025 — Present</div>
+              <div class="timeline-title">Official MP Campaign — Kwanza Constituency 2027</div>
+              <p class="timeline-desc">Launched the official campaign for Member of Parliament, Kwanza Constituency, in
+                the 2027 general elections — built on a manifesto of accountable, faith-driven, globally-informed
+                leadership.</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal from-right" style="padding-top:80px;">
+          <div class="section-label">Pledges to the People</div>
+          <h3 class="section-title" style="font-size:1.8rem;">What Dawson Will <span>Deliver</span></h3>
+          <div class="gold-divider"></div>
+          <div style="margin-top:28px;">
+            <div class="achievements-list">
+              <div class="achievement-item"><span class="achievement-icon">🏥</span><span
+                  class="achievement-text">Better-equipped health centres and faster emergency referral systems across
+                  every ward in Kwanza</span></div>
+              <div class="achievement-item"><span class="achievement-icon">🎓</span><span
+                  class="achievement-text">Transparent, equitable bursary allocation — no broker, no favouritism, every
+                  eligible student supported</span></div>
+              <div class="achievement-item"><span class="achievement-icon">💧</span><span
+                  class="achievement-text">Expanded clean water access through boreholes and piped schemes reaching
+                  underserved villages</span></div>
+              <div class="achievement-item"><span class="achievement-icon">🌾</span><span
+                  class="achievement-text">Stronger support for maize, dairy, and horticultural farmers through
+                  cooperatives and market access</span></div>
+              <div class="achievement-item"><span class="achievement-icon">🛣️</span><span
+                  class="achievement-text">Priority road rehabilitation connecting Kwanza's trading centres to county
+                  and national markets</span></div>
+              <div class="achievement-item"><span class="achievement-icon">💼</span><span class="achievement-text">Youth
+                  employment programmes built on real skills training and capacity development, not one-off
+                  handouts</span></div>
+              <div class="achievement-item"><span class="achievement-icon">⚖️</span><span
+                  class="achievement-text">Quarterly public accountability forums in every ward — the same transparency
+                  standards Dawson has applied internationally</span></div>
+            </div>
+          </div>
+          <div class="msg-card">
+            <h4>Personal Message</h4>
+            <p data-editable="personal-message">"My worldview expanded at a missionary school in Chicago, Illinois — but
+              everything I learned out there, every governance principle, every strategic framework, I am bringing back
+              home to Kwanza. My leadership will be measured not by speeches, but by the schools, clinics, and roads we
+              build together."</p>
+            <p class="msg-author">— Hon. Dawson Mudenyo, MP Aspirant, Kwanza Constituency</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="quote-section">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <h2 class="quote-text">Kwanza has waited long enough for leadership that delivers. <em>That wait ends in
+            2027.</em></h2>
+        <div style="margin-top:36px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary btn-lg">Join the Movement</a>
+          <a href="donate.html" class="btn btn-outline btn-lg">Support the Campaign</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo" style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+              <div class="footer-logo-badge">DM</div>
+              <div class="nav-logo-text">
+                <span class="nav-logo-name">Hon. Dawson Mudenyo</span>
+                <span class="nav-logo-sub">MP Aspirant · Kwanza 2027</span>
+              </div>
+            </div>
+            <p class="footer-desc">Faith-driven, experienced leadership for Kwanza Constituency. Fighting for
+              healthcare, education, clean water, roads, and dignity for every resident.</p>
+            <div class="footer-social">
+              <a href="#" class="social-icon">📘</a>
+              <a href="#" class="social-icon">🐦</a>
+              <a href="#" class="social-icon">📸</a>
+              <a href="https://wa.me/254700000000" class="social-icon">💬</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links">
+              <a href="index.html">Home</a>
+              <a href="about.html">About Dawson</a>
+              <a href="manifesto.html">Manifesto</a>
+              <a href="projects.html">Development Priorities</a>
+              <a href="news.html">News</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Get Involved</h4>
+            <div class="footer-links">
+              <a href="contact.html">Volunteer</a>
+              <a href="donate.html">Donate</a>
+              <a href="news.html">News & Updates</a>
+              <a href="contact.html">Contact Us</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Contact</h4>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>Kwanza Constituency,
+                Trans-Nzoia County</span></div>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+254 700 000000</span>
+            </div>
+            <div class="footer-contact-item"><span
+                class="footer-contact-icon">✉️</span><span>info@dawsonmudenyo.org</span></div>
+            <form class="newsletter-form" id="newsletterForm" style="margin-top:16px;">
+              <input class="newsletter-input" type="email" placeholder="Your email" required />
+              <button class="newsletter-btn" type="submit">Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2027 Hon. Dawson Mudenyo Campaign. All rights reserved. | Kwanza Constituency,
+          Trans-Nzoia County</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/254700000000" class="whatsapp-float">💬</a>
+  <button class="scroll-top" id="scrollTop">↑</button>
+  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="firebase-admin.js"></script>
+
+</body>
+
+</html>

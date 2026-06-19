@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News & Updates — Hon. Dawson Mudenyo | Kwanza Constituency 2027</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <style>
+    .nav-logo-img {
+      height: 56px;
+      width: 56px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .footer-logo-img {
+      height: 72px;
+      width: 72px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .news-hero-bg {
+      background: url('https://images.unsplash.com/photo-1495020689067-958852a7765e?autit=crop&w=1800&q=80') center/cover;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .news-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 168, 47, .35);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, .3);
+    }
+
+    .news-card-img {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .news-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .news-card:hover .news-card-img img {
+      transform: scale(1.07);
+    }
+
+    .news-card-date {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(6, 15, 34, .85);
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 50px;
+      letter-spacing: .04em;
+    }
+
+    .news-card-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card-tag {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .news-card h3 {
+      font-size: 1.05rem;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .news-card p {
+      font-size: .88rem;
+      color: rgba(255, 255, 255, .6);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+
+    .news-card-link {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .featured-news {
+      background: linear-gradient(135deg, rgba(10, 33, 72, .55), rgba(6, 15, 34, .75));
+      border: 1px solid rgba(212, 168, 47, .25);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .featured-news-img {
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .featured-news-content {
+      padding: 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-badge {
+      background: rgba(212, 168, 47, .9);
+      color: #1a1a1a;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 1;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    @media (max-width:1024px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .featured-news {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-news-img {
+        min-height: 240px;
+      }
+
+      .gallery-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:640px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-news-content {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-badge">DM</div>
+        <div class="nav-logo-text"><span class="nav-logo-name">Hon. Dawson Mudenyo</span><span class="nav-logo-sub">MP
+            Aspirant · Kwanza 2027</span></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="projects.html">Projects</a>
+        <a href="news.html" class="active">News</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-outline btn-sm">Volunteer</a>
+        <a href="donate.html" class="btn btn-primary btn-sm">Support Campaign</a>
+      </div>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="manifesto.html">Manifesto</a>
+    <a href="projects.html">Projects</a>
+    <a href="news.html">News</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-menu-cta">
+      <a href="contact.html" class="btn btn-outline">Volunteer</a>
+      <a href="donate.html" class="btn btn-primary">Support Campaign</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="page-hero-bg news-hero-bg" data-editable-img="news-hero-bg"></div>
+    <div class="container page-hero-content">
+      <p class="page-hero-label">From the Campaign Trail</p>
+      <h1 class="page-hero-title">News & Updates</h1>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>News</span></div>
+    </div>
+  </div>
+
+  <section class="section-pad bg-dark">
+    <div class="container">
+      <div class="featured-news reveal">
+        <img class="featured-news-img"
+          src="https://images.unsplash.com/photo-1475721027785-f74eco=format&fit=crop&w=1200&q=80" alt="Campaign launch"
+          loading="lazy" />
+        <div class="featured-news-content">
+          <span class="featured-badge">Featured</span>
+          <h2 style="font-size:1.8rem; margin-bottom:16px;" data-editable="featured-news-title">Dawson Mudenyo
+            Officially Launches MP Bid for Kwanza Constituency</h2>
+          <p style="margin-bottom:20px; color:rgba(255,255,255,0.7);" data-editable="featured-news-body">Hon. Dawson
+            Mudenyo has formally announced his candidacy for Member of Parliament, Kwanza Constituency, in the 2027
+            General Election. Speaking to residents in Kwanza Town, he outlined a vision grounded in faith,
+            transparency, and two decades of international NGO governance experience — pledging to bring the same rigor
+            to healthcare, education, water, and infrastructure across all four wards.</p>
+          <div class="project-meta">
+            <div class="project-meta-item">📅 Campaign Launch</div>
+            <div class="project-meta-item">📍 Kwanza Town</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title-block centered reveal">
+        <div class="section-label">Latest Updates</div>
+        <h2 class="section-title">From the <span>Campaign Trail</span></h2>
+        <div class="gold-divider centered"></div>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter-btn="all" data-filter-group="news">All</button>
+        <button class="filter-btn" data-filter-btn="events" data-filter-group="news">Events</button>
+        <button class="filter-btn" data-filter-btn="manifesto" data-filter-group="news">Manifesto</button>
+        <button class="filter-btn" data-filter-btn="community" data-filter-group="news">Community</button>
+        <button class="filter-btn" data-filter-btn="press" data-filter-group="news">Press</button>
+      </div>
+
+      <div class="news-grid">
+        <div class="news-card reveal" data-filter-item="events">
+          <div class="news-card-img">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd6909799crop&w=600&q=80"
+              alt="Town hall meeting" loading="lazy" />
+            <span class="news-card-date">This Week</span>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Events</div>
+            <h3>Town Hall Meeting Held in Kapomboi Ward</h3>
+            <p>Dawson met with residents to discuss healthcare access and listen to firsthand accounts of challenges
+              facing local dispensaries.</p>
+            <span class="news-card-link">Read More →</span>
+          </div>
+        </div>
+
+        <div class="news-card reveal" data-filter-item="manifesto">
+          <div class="news-card-img">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?autop&w=600&q=80"
+              alt="Manifesto launch" loading="lazy" />
+            <span class="news-card-date">2 Weeks Ago</span>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Manifesto</div>
+            <h3>The Kwanza Manifesto 2027 Unveiled to the Public</h3>
+            <p>A nine-pillar plan covering healthcare, education, water, roads, agriculture, and transparent governance
+              was presented to constituents.</p>
+            <span class="news-card-link">Read More →</span>
+          </div>
+        </div>
+
+        <div class="news-card reveal" data-filter-item="community">
+          <div class="news-card-img">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto==600&q=80"
+              alt="Youth engagement" loading="lazy" />
+            <span class="news-card-date">3 Weeks Ago</span>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Community</div>
+            <h3>Youth Roundtable Focuses on Skills & Employment</h3>
+            <p>Young people from across Kwanza's four wards shared ideas on vocational training and enterprise support
+              with the campaign team.</p>
+            <span class="news-card-link">Read More →</span>
+          </div>
+        </div>
+
+        <div class="news-card reveal" data-filter-item="community">
+          <div class="news-card-img">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32=600&q=80" alt="Women's group visit"
+              loading="lazy" />
+            <span class="news-card-date">1 Month Ago</span>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Community</div>
+            <h3>Campaign Visits Women's Table-Banking Groups in Bidii</h3>
+            <p>Dawson listened to women's groups about access to credit and market opportunities, shaping the women's
+              empowerment pillar.</p>
+            <span class="news-card-link">Read More →</span>
+          </div>
+        </div>
+
+        <div class="news-card reveal" data-filter-item="events">
+          <div class="news-card-img">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?aucrop&w=600&q=80"
+              alt="Farmers meeting" loading="lazy" />
+            <span class="news-card-date">1 Month Ago</span>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Events</div>
+            <h3>Farmer Cooperative Leaders Meet With Campaign Team</h3>
+            <p>Discussions centered on input costs, storage solutions, and strengthening bargaining power for Kwanza's
+              maize and dairy farmers.</p>
+            <span class="news-card-link">Read More →</span>
+          </div>
+        </div>
+
+        <div class="news-card reveal" data-filter-item="press">
+          <div class="news-card-img">
+            <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?autow=600&q=80" alt="Press coverage"
+              loading="lazy" />
+            <span class="news-card-date">2 Months Ago</span>
+          </div>
+          <div class="news-card-body">
+            <div class="news-card-tag">Press</div>
+            <h3>Dawson Mudenyo's Governance Background Featured in Regional Media</h3>
+            <p>Local press covered Dawson's transition from international NGO governance advisory work to
+              constituency-level public service.</p>
+            <span class="news-card-link">Read More →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title-block centered reveal" style="margin-top:64px;">
+        <div class="section-label">Campaign Gallery</div>
+        <h2 class="section-title">Moments From the <span>Trail</span></h2>
+        <div class="gold-divider centered"></div>
+      </div>
+      <div class="gallery-strip" id="lightboxGallery">
+        <div class="gallery-item"><img
+            src="https://images.unsplash.com/photo-153fd69097998?auto=format&fit=crop&w=500&q=80" alt="Campaign event 1"
+            loading="lazy" /></div>
+        <div class="gallery-item"><img
+            src="https://images.unsplash.com/photo-155676117dc0f32e7?auto=format&fit=crop&w=500&q=80"
+            alt="Campaign event 2" loading="lazy" /></div>
+        <div class="gallery-item"><img
+            src="https://images.unsplash.com/photo-14885217ae773c?auto=format&fit=crop&w=500&q=80"
+            alt="Campaign event 3" loading="lazy" /></div>
+        <div class="gallery-item"><img
+            src="https://images.unsplash.com/photo-1500382017468f?auto=format&fit=crop&w=500&q=80"
+            alt="Campaign event 4" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad bg-darker">
+    <div class="container" style="text-align:center;">
+      <h2 class="section-title" style="max-width:640px; margin:0 auto 16px;">Stay Updated, <span>Stay Involved</span>
+      </h2>
+      <p class="section-subtitle" style="margin:0 auto 32px;">Subscribe to get campaign news straight to your inbox, or
+        join the WhatsApp community for real-time updates.</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://wa.me/254700000000?text=Hello%2C%20I%27d%20like%20to%20join%20the%20campaign%20WhatsApp%20updates."
+          class="btn btn-primary btn-lg">💬 Join WhatsApp Updates</a>
+        <a href="contact.html" class="btn btn-outline btn-lg">Volunteer or Donate</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo" style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+              <div class="footer-logo-badge">DM</div>
+              <div class="nav-logo-text"><span class="nav-logo-name">Hon. Dawson Mudenyo</span><span
+                  class="nav-logo-sub">MP Aspirant · Kwanza 2027</span></div>
+            </div>
+            <p class="footer-desc">Faith-driven, experienced leadership for Kwanza Constituency.</p>
+            <div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a
+                href="#" class="social-icon">📸</a><a href="https://wa.me/254700000000" class="social-icon">💬</a></div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Quick Links</h4>
+            <div class="footer-links"><a href="index.html">Home</a><a href="about.html">About Dawson</a><a
+                href="manifesto.html">Manifesto</a><a href="projects.html">Development Priorities</a><a
+                href="news.html">News</a></div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Get Involved</h4>
+            <div class="footer-links"><a href="contact.html">Volunteer</a><a href="donate.html">Donate</a><a
+                href="news.html">News & Updates</a><a href="contact.html">Contact Us</a></div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Contact</h4>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><span>Kwanza Constituency,
+                Trans-Nzoia County</span></div>
+            <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><span>+254 700 000000</span>
+            </div>
+            <div class="footer-contact-item"><span
+                class="footer-contact-icon">✉️</span><span>info@dawsonmudenyo.org</span></div>
+            <form class="newsletter-form" id="newsletterForm" style="margin-top:16px;">
+              <input class="newsletter-input" type="email" placeholder="Your email" required />
+              <button class="newsletter-btn" type="submit">Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="footer-bottom">
+        <p class="footer-bottom-text">© 2027 Hon. Dawson Mudenyo Campaign. All rights reserved. | Kwanza Constituency,
+          Trans-Nzoia County</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/254700000000" class="whatsapp-float">💬</a>
+  <button class="scroll-top" id="scrollTop">↑</button>
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close">✕</span>
+    <img class="lightbox-img" src="" alt="" />
+  </div>
+  <script src="script.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+  <script src="firebase-admin.js"></script>
+</body>
+
+</html>
